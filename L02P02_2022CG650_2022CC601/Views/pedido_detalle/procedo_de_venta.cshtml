@@ -1,0 +1,43 @@
+﻿@model L02P02_2022CG650_2022CC601.Models.clientes
+@{
+    ViewBag.Title = "Venta de Libros";
+    var carrito = ViewBag.Carrito as List<libros>;
+}
+
+<h1>Venta de Libros</h1>
+<h3>Proceso de venta</h3>
+
+<div>
+    <h2>Datos del Cliente</h2>
+    @using (Html.BeginForm("CerrarVenta", "Venta", FormMethod.Post))
+    {
+        <div>
+            <label>Nombre:</label>
+            @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Apellido:</label>
+            @Html.TextBoxFor(m => m.apellido, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Email:</label>
+            @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Dirección:</label>
+            @Html.TextBoxFor(m => m.direccion, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-primary">Cerrar venta</button>
+    }
+</div>
+
+<div>
+    <h2>Carrito</h2>
+    <ul class="list-group">
+        @foreach (var libro in carrito)
+        {
+            <li class="list-group-item">@libro.nombre - $@libro.precio</li>
+        }
+    </ul>
+    <p><strong>Total:</strong> $@ViewBag.Total</p>
+</div>

@@ -9,10 +9,8 @@
         public string? url_imagen { get; set; }
 
         public int id_autor { get; set; }
-        public autores Autor { get; set; }
 
         public int id_categoria { get; set; }
-        public categorias Categoria { get; set; }
 
         public decimal precio { get; set; }
         public char estado { get; set; }

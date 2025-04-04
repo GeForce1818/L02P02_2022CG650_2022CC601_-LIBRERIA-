@@ -5,7 +5,6 @@
         public int id { get; set; }
 
         public int id_cliente { get; set; }
-        public clientes Clientes { get; set; }
 
         public int cantidad_libros { get; set; }
         public decimal total { get; set; }

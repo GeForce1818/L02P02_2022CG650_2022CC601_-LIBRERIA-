@@ -16,6 +16,14 @@ namespace L02P02_2022CG650_2022CC601.Controllers
 
         public IActionResult Index()
         {
+            var listadoDeCategorias = (from ca in _LibreriaBDContext.categorias
+                                     select new
+                                     {
+                                         categoria = ca.categoria
+
+                                     }).ToList();
+            ViewData["listadoDeCategorias"] = new SelectList(listadoDeCategorias, "id", "categoria");
+
             return View();
         }
     }

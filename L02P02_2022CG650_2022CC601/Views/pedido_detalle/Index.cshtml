@@ -1,43 +1,59 @@
 ﻿@model L02P02_2022CG650_2022CC601.Models.clientes
 @{
     ViewBag.Title = "Venta de Libros";
-    var carrito = ViewBag.Carrito as List<libros>;
+    var carrito = ViewBag.Carrito as List<L02P02_2022CG650_2022CC601.Models.libros>;
 }
 
 <h1>Venta de Libros</h1>
 <h3>Proceso de venta</h3>
 
-<div>
-    <h2>Datos del Cliente</h2>
-    @using (Html.BeginForm("CerrarVenta", "Venta", FormMethod.Post))
-    {
-        <div>
-            <label>Nombre:</label>
-            @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
-        </div>
-        <div>
-            <label>Apellido:</label>
-            @Html.TextBoxFor(m => m.apellido, new { @class = "form-control" })
-        </div>
-        <div>
-            <label>Email:</label>
-            @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
-        </div>
-        <div>
-            <label>Dirección:</label>
-            @Html.TextBoxFor(m => m.direccion, new { @class = "form-control" })
-        </div>
-        <button type="submit" class="btn btn-primary">Cerrar venta</button>
+<style>
+    .agregar-libro {
+        min-width: 100px;
     }
-</div>
 
-<div>
-    <h2>Carrito</h2>
-    <ul class="list-group">
-        @foreach (var libro in carrito)
-        {
-            <li class="list-group-item">@libro.nombre - $@libro.precio</li>
-        }
-    </ul>
-    <p><strong>Total:</strong> $@ViewBag.Total</p>
+    .card {
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <!-- Columna izquierda: Formulario de datos del cliente -->
+        <div class="col-md-8">
+            <h2>Datos del Cliente</h2>
+            @using (Html.BeginForm("CerrarVenta", "Venta", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    <label for="nombre">Nombre:</label>
+                    @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", @id = "nombre" })
+                </div>
+                <div class="mb-3">
+                    <label for="apellido">Apellido:</label>
+                    @Html.TextBoxFor(m => m.apellido, new { @class = "form-control", @id = "apellido" })
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email:</label>
+                    @Html.TextBoxFor(m => m.email, new { @class = "form-control", @id = "email" })
+                </div>
+                <div class="mb-3">
+                    <label for="direccion">Dirección:</label>
+                    @Html.TextBoxFor(m => m.direccion, new { @class = "form-control", @id = "direccion" })
+                </div>
+                <button type="submit" class="btn btn-primary">Cerrar venta</button>
+            }
+        </div>
+
+        <!-- Columna derecha: Carrito de compras -->
+        <div class="col-md-4">
+            <h4 class="text-primary">Total Libros <span class="badge rounded-pill bg-primary">@ViewBag.Carrito?.Count ?? 0</span></h4>
+            <div class="card">
+                <div class="card-body">
+                    <p class="mb-1"><strong>Total (USD)</strong></p>
+                    <h4 class="text-end">$@ViewBag.Total  0</h4>
+                    <button class="btn btn-primary w-100 mt-2">Completar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

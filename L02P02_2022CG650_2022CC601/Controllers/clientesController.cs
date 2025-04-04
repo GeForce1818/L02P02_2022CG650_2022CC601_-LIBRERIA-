@@ -7,16 +7,16 @@ namespace L02P02_2022CG650_2022CC601.Controllers
     public class clientesController : Controller
     {
 
-        private readonly libreriaDbContext _libreriaDbContext;
+        private readonly LibreriaBDContext _LibreriaBDContext;
 
-        public clientesController(libreriaDbContext libreriaDbContext)
+        public clientesController(LibreriaBDContext libreriaDbContext)
         {
-            _libreriaDbContext = libreriaDbContext;
+            _LibreriaBDContext = libreriaDbContext;
         }
 
         public IActionResult Index()
         {
-            var listadoDeClientes = (from c in _libreriaDbContext.clientes
+            var listadoDeClientes = (from c in _LibreriaBDContext.clientes
                                     select new
                                     {
                                         nombre = c.nombre,

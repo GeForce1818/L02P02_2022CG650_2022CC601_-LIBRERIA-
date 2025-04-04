@@ -7,11 +7,11 @@ namespace L02P02_2022CG650_2022CC601.Controllers
     public class pedido_detalleController : Controller
     {
 
-        private readonly libreriaDbContext _libreriaDbContext;
+        private readonly LibreriaBDContext _LibreriaBDContext;
 
-        public pedido_detalleController(libreriaDbContext libreriaDbContext)
+        public pedido_detalleController(LibreriaBDContext LibreriaBDContext)
         {
-            _libreriaDbContext = libreriaDbContext;
+            _LibreriaBDContext = LibreriaBDContext;
         }
 
         public IActionResult Index()

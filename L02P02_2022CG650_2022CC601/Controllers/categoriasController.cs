@@ -7,11 +7,11 @@ namespace L02P02_2022CG650_2022CC601.Controllers
     public class categoriasController : Controller
     {
 
-        private readonly libreriaDbContext _libreriaDbContext;
+        private readonly LibreriaBDContext _LibreriaBDContext;
 
-        public categoriasController(libreriaDbContext libreriaDbContext)
+        public categoriasController(LibreriaBDContext LibreriaBDContext)
         {
-            _libreriaDbContext = libreriaDbContext;
+            _LibreriaBDContext = LibreriaBDContext;
         }
 
         public IActionResult Index()

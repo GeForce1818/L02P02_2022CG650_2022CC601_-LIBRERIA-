@@ -7,11 +7,11 @@ namespace L02P02_2022CG650_2022CC601.Controllers
     public class comentarios_librosController : Controller
     {
 
-        private readonly libreriaDbContext _libreriaDbContext;
+        private readonly LibreriaBDContext _LibreriaBDContext;
 
-        public comentarios_librosController(libreriaDbContext libreriaDbContext)
+        public comentarios_librosController(LibreriaBDContext LibreriaBDContext)
         {
-            _libreriaDbContext = libreriaDbContext;
+            _LibreriaBDContext = LibreriaBDContext;
         }
 
         public IActionResult Index()

@@ -16,14 +16,6 @@ namespace L02P02_2022CG650_2022CC601.Controllers
 
         public IActionResult Index()
         {
-            var listadoDeAutores = (from a in _LibreriaBDContext.autores
-                                   select new
-                                   {
-                                       autor = a.autor
-
-                                   }).ToList();
-            ViewData["listadoDeAutores"] = new SelectList(listadoDeAutores, "id", "autor");
-
             return View();
         }
     }
